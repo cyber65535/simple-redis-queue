@@ -7,7 +7,7 @@ except ImportError:
     from distutils.core import setup
 
 base_dir = os.path.dirname(__file__)
-readme_path = join(base_dir, 'README.rst')
+readme_path = join(base_dir, 'README.md')
 changes = join(base_dir, "CHANGES")
 
 __pkginfo__ = {}
