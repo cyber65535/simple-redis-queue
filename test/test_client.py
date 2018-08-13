@@ -6,13 +6,13 @@ from src import QueueClient
 
 
 def test_client():
+    client = QueueClient()
+    print(client.instance_keys)
     while 1:
-        client = QueueClient(
-            key='/test/simple/event', error_key='/error/simple/event')
-        r = input('event: ')
-        if r == '/quit':
+        msg = input('event: ')
+        if msg == '/quit':
             exit(0)
-        client.publish('test_print', {'info': r})
+        client.publish('test_print', {'name': 'me', 'info': msg})
 
 
 if __name__ == "__main__":

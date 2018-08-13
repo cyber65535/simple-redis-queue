@@ -3,13 +3,13 @@ sys.path.append("..")
 
 from src import QueueServer
 
-
-async def aecho(info):
-    print(info)
+async def aecho(name, info):
+    print(name + ':' + info)
 
 
 def echo(info):
     print(info)
+
 
 HANDLERS_MAP = {
     'test_print': aecho
@@ -18,9 +18,9 @@ HANDLERS_MAP = {
 
 def test_server():
     server = QueueServer()
+    print(server.instance_keys)
     server.add_handlers(HANDLERS_MAP)
-    server.async_run(
-        key='/test/simple/event', error_key='/error/simple/event')
+    server.async_listen()
 
 
 if __name__ == "__main__":
