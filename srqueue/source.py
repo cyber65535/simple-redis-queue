@@ -90,7 +90,7 @@ class QueueServer(object):
     def add_handlers(self, handler_map):
         self.HANDLERS_MAP.update(handler_map)
 
-    def async_listen(self):
+    def alisten(self):
         io_loop = asyncio.get_event_loop()
         io_loop.run_until_complete(self._alisten())
 
@@ -120,3 +120,20 @@ class QueueClient(object):
 
     def push_error(self, data):
         self.redis.lpush(self.error_key, data)
+
+
+class SimpleRedis(object):
+
+    def __init__(self, host='localhost', port=6379, db=0, password=None,
+                 key=None, error_key=None):
+        """init config"""
+        self._client = QueueClient(host, port, db, password, key, error_key)
+        self._server = QueueServer(host, port, db, password, key, error_key)
+
+    @property
+    def client(self):
+        return self._client
+
+    @property
+    def server(self):
+        return self._server
