@@ -122,7 +122,7 @@ class QueueClient(object):
         self.redis.lpush(self.error_key, data)
 
 
-class SimpleRedis(object):
+class SimpleQueue(object):
 
     def __init__(self, host='localhost', port=6379, db=0, password=None,
                  key=None, error_key=None):

@@ -1,3 +1,3 @@
 # coding: utf-8
 
-from .source import QueueServer, QueueClient, SimpleRedis
+from .source import QueueServer, QueueClient, SimpleQueue

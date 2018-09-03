@@ -24,7 +24,7 @@ Use
 
 ```
 # init config  : File A
-srque = srqueue(host, port, db, password, key, error_key)
+srque = srqueue.SimpleQueue(host, port, db, password, key, error_key)
 
 # server       : File B
 def some_func(name, words):
@@ -45,7 +45,7 @@ srque.client.publish("echo", data)
 If async
 
 ```
-srque = srqueue(host, port, db, password, key, error_key)
+srque = srqueue.SimpleQueue(host, port, db, password, key, error_key)
 
 # server
 async def some_func(words):            # async func
