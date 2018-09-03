@@ -1,7 +1,4 @@
-import sys
-sys.path.append("..")
-
-from src import QueueServer
+from srqueue import SimpleQueue
 
 async def aecho(name, info):
     print(name + ':' + info)
@@ -17,10 +14,10 @@ HANDLERS_MAP = {
 
 
 def test_server():
-    server = QueueServer()
-    print(server.instance_keys)
-    server.add_handlers(HANDLERS_MAP)
-    server.async_listen()
+    que = SimpleQueue()
+    print(que.server.instance_keys)
+    que.server.add_handlers(HANDLERS_MAP)
+    que.server.alisten()
 
 
 if __name__ == "__main__":

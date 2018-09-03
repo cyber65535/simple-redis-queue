@@ -1,18 +1,14 @@
-import sys
-sys.path.append("..")
-
-
-from src import QueueClient
+from srqueue import SimpleQueue
 
 
 def test_client():
-    client = QueueClient()
-    print(client.instance_keys)
+    que = SimpleQueue()
+    print(que.client.instance_keys)
     while 1:
         msg = input('event: ')
         if msg == '/quit':
             exit(0)
-        client.publish('test_print', {'name': 'me', 'info': msg})
+        que.client.publish('test_print', {'name': 'me', 'info': msg})
 
 
 if __name__ == "__main__":
